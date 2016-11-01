@@ -98,6 +98,16 @@ public class StatementTest {
     }
 
     @Test
+    public void testStatements() {
+        String[] results = result.split("\n\n");
+        for (int i = 0; i < testCustomers().size(); i++) {
+            String new_result = testCustomers().get(i).statement();
+            assert results[i].equals(new_result) :
+                    "don't match:\n" + results[i] + "\n\n" + new_result;
+        }
+    }
+
+    @Test
     public void statements() {
         for (Customer customer : testCustomers()) {
             System.out.println(customer.statement() + "\n");
@@ -129,4 +139,94 @@ public class StatementTest {
             System.out.println(String.format("customer%s.addRental(new Rental(movies.get(%s), %s));", r1, r2, r3));
         }
     }
+
+    private static String result = "Retal Record for customer0\n" +
+            "\tmovie4\t2.0\n" +
+            "\tmovie4\t2.0\n" +
+            "\tmovie3\t8.0\n" +
+            "\tmovie8\t1.5\n" +
+            "\tmovie0\t2.0\n" +
+            "Amount owed is 15.5\n" +
+            "You earned 5 frequent renter points\n" +
+            "\n" +
+            "Retal Record for customer1\n" +
+            "\tmovie5\t1.5\n" +
+            "\tmovie6\t2.0\n" +
+            "\tmovie2\t3.5\n" +
+            "\tmovie8\t1.5\n" +
+            "\tmovie4\t11.0\n" +
+            "\tmovie7\t3.5\n" +
+            "Amount owed is 23.0\n" +
+            "You earned 6 frequent renter points\n" +
+            "\n" +
+            "Retal Record for customer2\n" +
+            "\tmovie6\t3.5\n" +
+            "\tmovie5\t1.5\n" +
+            "\tmovie5\t10.5\n" +
+            "\tmovie7\t5.0\n" +
+            "Amount owed is 20.5\n" +
+            "You earned 4 frequent renter points\n" +
+            "\n" +
+            "Retal Record for customer3\n" +
+            "\tmovie7\t12.5\n" +
+            "\tmovie2\t2.0\n" +
+            "\tmovie2\t3.5\n" +
+            "\tmovie7\t2.0\n" +
+            "\tmovie0\t12.5\n" +
+            "\tmovie1\t3.0\n" +
+            "\tmovie0\t2.0\n" +
+            "Amount owed is 37.5\n" +
+            "You earned 7 frequent renter points\n" +
+            "\n" +
+            "Retal Record for customer4\n" +
+            "\tmovie5\t1.5\n" +
+            "\tmovie4\t8.0\n" +
+            "\tmovie9\t15.0\n" +
+            "\tmovie5\t4.5\n" +
+            "\tmovie0\t6.5\n" +
+            "Amount owed is 35.5\n" +
+            "You earned 6 frequent renter points\n" +
+            "\n" +
+            "Retal Record for customer5\n" +
+            "\tmovie8\t1.5\n" +
+            "\tmovie9\t6.0\n" +
+            "\tmovie0\t2.0\n" +
+            "\tmovie9\t9.0\n" +
+            "\tmovie5\t3.0\n" +
+            "Amount owed is 21.5\n" +
+            "You earned 7 frequent renter points\n" +
+            "\n" +
+            "Retal Record for customer6\n" +
+            "\tmovie9\t12.0\n" +
+            "\tmovie0\t12.5\n" +
+            "\tmovie8\t1.5\n" +
+            "\tmovie0\t12.5\n" +
+            "Amount owed is 38.5\n" +
+            "You earned 5 frequent renter points\n" +
+            "\n" +
+            "Retal Record for customer7\n" +
+            "\tmovie0\t2.0\n" +
+            "\tmovie5\t1.5\n" +
+            "\tmovie9\t12.0\n" +
+            "\tmovie4\t2.0\n" +
+            "\tmovie3\t3.5\n" +
+            "\tmovie3\t3.5\n" +
+            "\tmovie1\t0.0\n" +
+            "Amount owed is 24.5\n" +
+            "You earned 8 frequent renter points\n" +
+            "\n" +
+            "Retal Record for customer8\n" +
+            "\tmovie0\t8.0\n" +
+            "\tmovie6\t9.5\n" +
+            "\tmovie0\t8.0\n" +
+            "\tmovie8\t1.5\n" +
+            "\tmovie9\t9.0\n" +
+            "Amount owed is 36.0\n" +
+            "You earned 6 frequent renter points\n" +
+            "\n" +
+            "Retal Record for customer9\n" +
+            "\tmovie9\t21.0\n" +
+            "\tmovie9\t15.0\n" +
+            "Amount owed is 36.0\n" +
+            "You earned 4 frequent renter points";
 }
