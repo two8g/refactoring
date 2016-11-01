@@ -32,22 +32,13 @@ public class Customer {
         int frequentRenterPoint = 0;
         Enumeration<Rental> rentalEnumeration = rentals.elements();
         while (rentalEnumeration.hasMoreElements()) {
-            double thisAmount = 0;
             Rental each = rentalEnumeration.nextElement();
-            thisAmount = each.getCharge();
+            frequentRenterPoint += each.getFrequentRenterPoint();
 
-
-            //add frequent renter points
-            frequentRenterPoint++;
-            //add bonus for a teo day new release rental
-            if (each.getMovie().getPriceCode() == Movie.NEW_RELEASE
-                    && each.getDaysRented() > 1) {
-                frequentRenterPoint++;
-            }
 
             //show figure for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
-            totalAmount += thisAmount;
+            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
+            totalAmount += each.getCharge();
         }
         //add footer lines
         result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
