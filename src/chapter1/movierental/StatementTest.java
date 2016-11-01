@@ -100,7 +100,7 @@ public class StatementTest {
     @Test
     public void statements() {
         for (Customer customer : testCustomers()) {
-            System.out.println(customer.statement());
+            System.out.println(customer.statement() + "\n");
         }
     }
 
