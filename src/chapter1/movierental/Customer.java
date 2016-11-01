@@ -34,24 +34,8 @@ public class Customer {
         while (rentalEnumeration.hasMoreElements()) {
             double thisAmount = 0;
             Rental each = rentalEnumeration.nextElement();
+            thisAmount = amountFor(each);
 
-            //determine amounts for each line
-            switch (each.getMovie().getPriceCode()) {
-                case Movie.NORMAL:
-                    thisAmount += 2;
-                    if (each.getDaysRented() > 2)
-                        thisAmount += (each.getDaysRented() - 2) * 1.5;
-                    break;
-                case Movie.CHILDRENS:
-                    thisAmount += 1.5;
-                    if (each.getDaysRented() > 3) {
-                        thisAmount += (each.getDaysRented() - 3) * 1.5;
-                    }
-                    break;
-                case Movie.NEW_RELEASE:
-                    thisAmount += each.getDaysRented() * 3;
-                    break;
-            }
 
             //add frequent renter points
             frequentRenterPoint++;
@@ -69,5 +53,27 @@ public class Customer {
         result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
         result += "You earned " + String.valueOf(frequentRenterPoint) + " frequent renter points";
         return result;
+    }
+
+    private double amountFor(Rental each) {
+        double thisAmount = 0;
+        //determine amounts for each line
+        switch (each.getMovie().getPriceCode()) {
+            case Movie.NORMAL:
+                thisAmount += 2;
+                if (each.getDaysRented() > 2)
+                    thisAmount += (each.getDaysRented() - 2) * 1.5;
+                break;
+            case Movie.CHILDRENS:
+                thisAmount += 1.5;
+                if (each.getDaysRented() > 3) {
+                    thisAmount += (each.getDaysRented() - 3) * 1.5;
+                }
+                break;
+            case Movie.NEW_RELEASE:
+                thisAmount += each.getDaysRented() * 3;
+                break;
+        }
+        return thisAmount;
     }
 }
