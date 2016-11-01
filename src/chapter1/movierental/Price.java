@@ -6,6 +6,8 @@ package chapter1.movierental;
 public abstract class Price {
     abstract int getPriceCode();
 
+    abstract double getCharge(int dayRented);
+
     int getFrequentRenterPoints(int daysRented) {
         return 1;
     }
