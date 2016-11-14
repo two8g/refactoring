@@ -10,6 +10,7 @@ public class Movie {
     public final static int NEW_RELEASE = 2;
 
     private String title;
+
     private Price price;
 
     public Movie(String title, int priceCode) {
@@ -21,8 +22,8 @@ public class Movie {
         return title;
     }
 
-    public int getPriceCode() {
-        return price.getPriceCode();
+    public Price getPrice() {
+        return price;
     }
 
     public void setPriceCode(int priceCode) {
